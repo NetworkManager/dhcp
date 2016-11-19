@@ -3026,7 +3026,7 @@ dhc6_check_reply(struct client_state *client, struct dhc6_lease *new)
 	 * us to check for TAs as well.  SAR
 	 */
 	if ((have_addrs != ISC_TRUE) ||
-	    ((require_all_ias != 0) &&
+	    ((require_all_ias != 0 || client->state == S_REBINDING) &&
 	     ((got_na < wanted_ia_na) ||
 	      /*(got_ta < wanted_ia_ta) ||*/
 	      (got_pd < wanted_ia_pd)))) {
